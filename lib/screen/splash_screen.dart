@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
       // Navigator는 화면 간의 전환을 담당하는 클래스. '/main' 경로로 화면 전환
     });
 
-    return Scaffold(
+    return const Scaffold(
       // Scaffold는 기본 화면 레이아웃을 제공하는 위젯
         body: Center(
           // 화면 중앙에 UI 요소를 배치하기 위한 레이아웃 도우미
