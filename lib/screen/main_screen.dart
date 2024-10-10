@@ -12,7 +12,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('메인화면')),
-      body: const Column(
+      body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,11 +25,21 @@ class _MainScreenState extends State<MainScreen> {
             ),
             Row(
               children: [
-                Expanded(child: Text('오창모')),
+                Expanded(flex: 2, child: Text('오창모')),
                 Expanded(child: Text('오창모')),
                 Expanded(child: Text('오창모')),
               ],
-            )
+            ),
+            Container(
+              width: 300,
+              height: 100,
+              margin: EdgeInsets.only(left: 16),
+              alignment: Alignment.center,
+              child: Text('오창모'),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
+            ),
+            SizedBox(width: 100, height: 300, child: Text('오창모짱'))
           ]),
     );
   }
