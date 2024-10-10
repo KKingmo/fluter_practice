@@ -39,7 +39,27 @@ class _MainScreenState extends State<MainScreen> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10), color: Colors.blue),
             ),
-            SizedBox(width: 100, height: 300, child: Text('오창모짱'))
+            Text(
+              '오창모짱',
+              style: TextStyle(
+                color: Colors.green,
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
+              ),
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/car.png',
+                  width: 100,
+                  height: 100,
+                ),
+                Icon(
+                  Icons.access_alarm,
+                  size: 100,
+                )
+              ],
+            )
           ]),
     );
   }
