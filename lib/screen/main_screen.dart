@@ -8,27 +8,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List lstHello = ['홍드로이드', '안녕하세요', '반갑습니다', '즐거운 식사시간 되세요'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('메인화면')),
-      body: Column(children: [
-        Container(
-          margin: EdgeInsets.all(32),
-          width: 200,
-          height: 70,
-          child: ElevatedButton(
-              onPressed: () {
-                // 클릭 되었을때 동작하고 싶은 액션 정의
-                print('버튼이 클릭되었습니다');
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  foregroundColor: Colors.white,
-                  elevation: 0),
-              child: Text('눌러보세요!')),
-        )
-      ]),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('${lstHello[index]}'),
+            subtitle: Text('서브타이틀'),
+          );
+        },
+        itemCount: lstHello.length,
+      ),
     );
   }
 }
