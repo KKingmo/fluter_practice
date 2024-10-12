@@ -8,59 +8,26 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List lstHello = ['홍드로이드', '안녕하세요', '반갑습니다', '즐거운 식사시간 되세요'];
+  TextEditingController idController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('메인화면')),
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        appBar: AppBar(title: Text('메인화면')),
+        body: Column(
           children: [
-            Text('반갑습니다'),
-            Text('저는 플러터 공부하는 오창모입니다.'),
-            Text('좋은 하루되세요.'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('안녕'), Text('반가워'), Text('가로로 쌓는 위젯입니다.')],
+            TextField(
+              controller: idController,
+              decoration: InputDecoration(labelText: '아이디를 입력해주세요'),
             ),
-            Row(
-              children: [
-                Expanded(flex: 2, child: Text('오창모')),
-                Expanded(child: Text('오창모')),
-                Expanded(child: Text('오창모')),
-              ],
+            ElevatedButton(
+              onPressed: () {
+                print(idController.text.toString());
+              },
+              child: Text('아이디 입력 값 가져오기'),
             ),
-            Container(
-              width: 300,
-              height: 100,
-              margin: EdgeInsets.only(left: 16),
-              alignment: Alignment.center,
-              child: Text('오창모'),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
-            ),
-            Text(
-              '오창모짱',
-              style: TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/car.png',
-                  width: 100,
-                  height: 100,
-                ),
-                Icon(
-                  Icons.access_alarm,
-                  size: 100,
-                )
-              ],
-            )
-          ]),
-    );
+          ],
+        ));
   }
 }
