@@ -12,55 +12,23 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('메인화면')),
-      body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('반갑습니다'),
-            Text('저는 플러터 공부하는 오창모입니다.'),
-            Text('좋은 하루되세요.'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('안녕'), Text('반가워'), Text('가로로 쌓는 위젯입니다.')],
-            ),
-            Row(
-              children: [
-                Expanded(flex: 2, child: Text('오창모')),
-                Expanded(child: Text('오창모')),
-                Expanded(child: Text('오창모')),
-              ],
-            ),
-            Container(
-              width: 300,
-              height: 100,
-              margin: EdgeInsets.only(left: 16),
-              alignment: Alignment.center,
-              child: Text('오창모'),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
-            ),
-            Text(
-              '오창모짱',
-              style: TextStyle(
-                color: Colors.green,
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-            Row(
-              children: [
-                Image.asset(
-                  'assets/car.png',
-                  width: 100,
-                  height: 100,
-                ),
-                Icon(
-                  Icons.access_alarm,
-                  size: 100,
-                )
-              ],
-            )
-          ]),
+      body: Column(children: [
+        Container(
+          margin: EdgeInsets.all(32),
+          width: 200,
+          height: 70,
+          child: ElevatedButton(
+              onPressed: () {
+                // 클릭 되었을때 동작하고 싶은 액션 정의
+                print('버튼이 클릭되었습니다');
+              },
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                  elevation: 0),
+              child: Text('눌러보세요!')),
+        )
+      ]),
     );
   }
 }
