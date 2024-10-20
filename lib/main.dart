@@ -1,5 +1,6 @@
 import 'package:day_guess/provider/counter_provider.dart';
 import 'package:day_guess/provider/theme_provider.dart';
+import 'package:day_guess/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,9 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (context) => ThemeProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => UserProvider(),
       )
     ],
     child: const MyApp(),
@@ -48,6 +52,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final userName = context.select((UserProvider user) => user.name);
+    final userAge = context.select((UserProvider user) => user.age);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -67,12 +73,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
-
+            SizedBox(height: 20),
             Consumer<ThemeProvider>(
                 builder: (context, value, child) => Switch(
                       value: value.isDarkMode,
                       onChanged: (_) => value.toggleTheme(),
                     )),
+            SizedBox(height: 20),
+            Text('${userName}'),
+            Text('${userAge}'),
+            ElevatedButton(
+                onPressed: () =>
+                    context.read<UserProvider>().updateName('changmo king'),
+                child: Text('update name')),
+            ElevatedButton(
+                onPressed: () => context.read<UserProvider>().updateAge(33),
+                child: Text('update age')),
           ],
         ),
       ),
