@@ -1,3 +1,4 @@
+import 'package:day_guess/screen/sub_a_screen.dart';
 import 'package:day_guess/screen/sub_screen.dart';
 import 'package:flutter/material.dart'; // Material Design 스타일의 UI 구성 요소를 제공하는 패키지
 
@@ -29,6 +30,15 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (context) {
               return SubScreen(
+                msg: msg,
+              );
+            },
+          );
+        } else if (settings.name == '/sub-a') {
+          String msg = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (context) {
+              return SubAScreen(
                 msg: msg,
               );
             },

@@ -28,7 +28,7 @@ class SubScreen extends StatelessWidget {
       body: Column(
         children: [
           Center(
-            child: Text('서브화면 입니다. ${msg}'),
+            child: Text('앱바 커스텀 해본 화면 입니다. ${msg}'),
           ),
           TextButton(
             onPressed: () {

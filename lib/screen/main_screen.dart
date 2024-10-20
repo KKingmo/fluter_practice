@@ -25,6 +25,12 @@ class _MainScreenState extends State<MainScreen> {
             },
             child: Text('클릭하여 서브 화면으로 이동'),
           ),
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/sub-a', arguments: 'sub-a');
+            },
+            child: Text('클릭하여 서브A 화면으로 이동'),
+          ),
         ],
       ),
     );
