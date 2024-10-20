@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // build() 메서드는 위젯 트리를 생성
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       // 앱의 이름을 정의. 디버깅 시 사용됨
       initialRoute: '/',
