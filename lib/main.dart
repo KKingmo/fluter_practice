@@ -1,12 +1,20 @@
 import 'package:day_guess/provider/counter_provider.dart';
+import 'package:day_guess/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   // ChangeNotifierProvider를 사용해 CounterProvider를 애플리케이션 전반에 제공
-  runApp(ChangeNotifierProvider(
-    create: (context) => CounterProvider(), // Provider 생성
-    child: const MyApp(), // Provider가 MyApp 위젯 트리에 제공됨
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => CounterProvider(), // Provider 생성
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+      )
+    ],
+    child: const MyApp(),
   ));
 }
 
@@ -16,12 +24,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true, // Material3 스타일 사용
-      ),
+      theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData.light(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -60,6 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
+
+            Consumer<ThemeProvider>(
+                builder: (context, value, child) => Switch(
+                      value: value.isDarkMode,
+                      onChanged: (_) => value.toggleTheme(),
+                    )),
           ],
         ),
       ),
